@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zimletConfig name="tk_barrydegraaff_owncloud_zimlet" version="1.0">
+  <global>
+    <property name="stripUrls">true</property>
+  </global>
+</zimletConfig>
