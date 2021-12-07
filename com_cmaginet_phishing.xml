@@ -1,0 +1,8 @@
+<zimlet name="com_cmaginet_phishing" version="0.1" label="X-Phishing Zimlet" description="Show Alert for Phishing Attack Zimlet">
+  <contentObject>
+    <matchOn>
+      <regex attrs="ig">user|person</regex>
+    </matchOn>
+    <toolTip>Hello World!</toolTip>
+  </contentObject>
+</zimlet>
