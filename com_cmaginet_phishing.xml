@@ -17,7 +17,8 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 -->
 <zimlet
   name="com_cmaginet_phishing"
-  version="0.0.2"
+  version="0.0.3"
+  target="main view-window"
   label="${msg.zimletLabel}"
   description="${msg.description}">
 
