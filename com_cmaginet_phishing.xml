@@ -15,17 +15,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see http://www.gnu.org/licenses/.
 -->
-<zimlet name="com_cmaginet_phishing"
-        version="0.0.2"
-        target="main view-window"
-        label="${msg.zimletLabel}"
-        description="${msg.description}">
+<zimlet
+  name="com_cmaginet_phishing"
+  version="0.0.2"
+  label="${msg.zimletLabel}"
+  description="${msg.description}">
 
-  <handlerObject>com_cmaginet_phishing_HandlerObject</handlerObject>
-  <serverExtension hasKeyword="url" extensionClass="com.zimbra.cs.zimlet.handler.RegexHandler"/>
-  <contentObject type="url">
+  <contentObject>
     <matchOn>
-      <regex attrs="ig">user|person</regex>
+      <regex attrs="ig">user|person</regex> <!-- matches on the words user or person -->
     </matchOn>
     <toolTip>Hello World!</toolTip>
   </contentObject>
