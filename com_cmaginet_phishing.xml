@@ -17,7 +17,7 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
 -->
 <zimlet
   name="com_cmaginet_phishing"
-  version="0.0.7"
+  version="0.0.8"
   target="main view-window"
   label="${msg.zimletLabel}"
   description="${msg.description}">
@@ -25,10 +25,11 @@ along with this program.  If not, see http://www.gnu.org/licenses/.
   <include>cmaginet_urls.js</include>
   <handlerObject>com_cmaginet_phishing_Handler</handlerObject>
 
-  <contentObject>
+  <serverExtension hasKeyword="url" extensionClass="com.zimbra.cs.zimlet.handler.RegexHandler"/>
+  <contentObject type="url">
     <matchOn>
-      <regex attrs="ig">user|person</regex> <!-- matches on the words user or person -->
+      <regex attrs="ig">(((telnet|cid):)|((https?|mailto|notes|smb|ftp|gopher|news|tel|callto|webcal|feed|file):\/\/)|(www\.[\w\.\_\-]+))[^\s\xA0\(\)\&lt;\>\[\]\{\}\'\"]*</regex>
     </matchOn>
-    <toolTip>Hello World!</toolTip>
   </contentObject>
 </zimlet>
+
