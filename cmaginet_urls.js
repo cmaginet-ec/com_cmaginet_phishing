@@ -24,6 +24,8 @@ function() {
     if(r)
     com_cmaginet_phishing_Handler.REGEXES.push(r);
   }
+
+  console.log('Cmaginetttttttttttttttttttttt Inicio');
 }
 
 com_cmaginet_phishing_Handler.IGNORE = AjxUtil.arrayAsHash([".", ",", ";", "!", "*", ":", "?", ")", "]", "}"]);
@@ -87,6 +89,14 @@ function(html, idx, obj, context) {
   return idx;
 };
 
+com_cmaginet_phishing_Handler.prototype.clicked = function(){
+  var tooltip = DwtShell.getShell(window).getToolTip();
+  if (tooltip) {
+    tooltip.popdown();
+  }
+  return true;
+};
+
 com_cmaginet_phishing_Handler.prototype.toolTipPoppedUp =
 function(spanElement, obj, context, canvas) {
 
@@ -101,8 +111,6 @@ function(spanElement, obj, context, canvas) {
 
   if (this._disablePreview || url.indexOf("file://") == 0) {  // local files
     this._showUrlThumbnail(url, canvas);
-  } else if (this._alexaId) {
-    this._showAlexaThumbnail(url, canvas);
   } else {
     // Pre-load placeholder image
     (new Image()).src = this.getResource('blank_pixel.gif');
