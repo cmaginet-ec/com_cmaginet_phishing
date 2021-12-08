@@ -83,6 +83,7 @@ function(html, idx, obj, context) {
       }
     }
   }
+  html[0] = '<div>HOLA MUNDO</div>'
   html[idx++] = link;
   html[idx++] = "'>";
   html[idx++] = AjxStringUtil.htmlEncode(obj);
