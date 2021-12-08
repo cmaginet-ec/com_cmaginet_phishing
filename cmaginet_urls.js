@@ -1,45 +1,45 @@
-function Com_cmaginet_phishing() {
+function com_cmaginet_phishing_Handler() {
 }
 
-Com_cmaginet_phishing.prototype = new ZmZimletBase();
-Com_cmaginet_phishing.prototype.constructor = com_cmaginet_phishing_handler;
+com_cmaginet_phishing_Handler.prototype = new ZmZimletBase();
+com_cmaginet_phishing_Handler.prototype.constructor = com_cmaginet_phishing_Handler;
 
-Com_cmaginet_phishing.prototype.init =
+com_cmaginet_phishing_Handler.prototype.init =
 function() {
   this._disablePreview = this.getBoolConfig("disablePreview",true);
 
-  Com_cmaginet_phishing.REGEXES = [];
+  com_cmaginet_phishing_Handler.REGEXES = [];
   //populate regular expressions
   var s = this.getConfig("ZIMLET_CONFIG_REGEX_VALUE");
 
   if(s){
     var r = new RegExp(s,"gi");
     if(r)
-    Com_cmaginet_phishing.REGEXES.push(r);
+    com_cmaginet_phishing_Handler.REGEXES.push(r);
   }
 
   if (/^\s*true\s*$/i.test(this.getConfig("supportUNC"))) {
     s = this.getConfig("ZIMLET_UNC_REGEX_VALUE");
     var r = new RegExp(s,"gi");
     if(r)
-    Com_cmaginet_phishing.REGEXES.push(r);
+    com_cmaginet_phishing_Handler.REGEXES.push(r);
   }
 }
 
-Com_cmaginet_phishing.IGNORE = AjxUtil.arrayAsHash([".", ",", ";", "!", "*", ":", "?", ")", "]", "}"]);
+com_cmaginet_phishing_Handler.IGNORE = AjxUtil.arrayAsHash([".", ",", ";", "!", "*", ":", "?", ")", "]", "}"]);
 
-Com_cmaginet_phishing.prototype.match =
+com_cmaginet_phishing_Handler.prototype.match =
 function(line, startIndex) {
-  for (var i = 0; i < Com_cmaginet_phishing.REGEXES.length; i++) {
+  for (var i = 0; i < com_cmaginet_phishing_Handler.REGEXES.length; i++) {
 
-    var re = Com_cmaginet_phishing.REGEXES[i];
+    var re = com_cmaginet_phishing_Handler.REGEXES[i];
     re.lastIndex = startIndex;
     var m = re.exec(line);
     if (!m) { continue; }
 
     var url = m[0];
     var last = url.charAt(url.length - 1);
-    while (url.length && Com_cmaginet_phishing.IGNORE[last]) {
+    while (url.length && com_cmaginet_phishing_Handler.IGNORE[last]) {
       url = url.substring(0, url.length - 1);
       last = url.charAt(url.length - 1);
     }
@@ -48,7 +48,7 @@ function(line, startIndex) {
   }
 };
 
-Com_cmaginet_phishing.prototype._getHtmlContent =
+com_cmaginet_phishing_Handler.prototype._getHtmlContent =
 function(html, idx, obj, context) {
 
   var escapedUrl = obj.replace(/\"/g, '\"').replace(/^\s+|\s+$/g, "");
@@ -87,7 +87,7 @@ function(html, idx, obj, context) {
   return idx;
 };
 
-Com_cmaginet_phishing.prototype.toolTipPoppedUp =
+com_cmaginet_phishing_Handler.prototype.toolTipPoppedUp =
 function(spanElement, obj, context, canvas) {
 
   var url = obj.replace(/^\s+|\s+$/g, "");
@@ -110,6 +110,6 @@ function(spanElement, obj, context, canvas) {
   }
 };
 
-Com_cmaginet_phishing.prototype._showUrlThumbnail = function(url, canvas){
+com_cmaginet_phishing_Handler.prototype._showUrlThumbnail = function(url, canvas){
   canvas.innerHTML = "<b>ECUADOR URL:</b> " + AjxStringUtil.htmlEncode(decodeURI(url));
 };
