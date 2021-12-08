@@ -86,3 +86,30 @@ function(html, idx, obj, context) {
   html[idx++] = "</a>";
   return idx;
 };
+
+Com_cmaginet_phishing.prototype.toolTipPoppedUp =
+function(spanElement, obj, context, canvas) {
+
+  var url = obj.replace(/^\s+|\s+$/g, "");
+  if (/^\s*true\s*$/i.test(this.getConfig("stripUrls"))) {
+    url = url.replace(/[?#].*$/, "");
+  }
+  if (url.indexOf("\\\\") == 0) {
+    url = "file:" + url;
+  }
+  url = url.replace(/\\/g, '/');
+
+  if (this._disablePreview || url.indexOf("file://") == 0) {  // local files
+    this._showUrlThumbnail(url, canvas);
+  } else if (this._alexaId) {
+    this._showAlexaThumbnail(url, canvas);
+  } else {
+    // Pre-load placeholder image
+    (new Image()).src = this.getResource('blank_pixel.gif');
+    this._showFreeThumbnail(url, canvas);
+  }
+};
+
+Com_cmaginet_phishing.prototype._showUrlThumbnail = function(url, canvas){
+  canvas.innerHTML = "<b>ECUADOR URL:</b> " + AjxStringUtil.htmlEncode(decodeURI(url));
+};
