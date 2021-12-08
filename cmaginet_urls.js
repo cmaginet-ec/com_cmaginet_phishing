@@ -26,7 +26,7 @@ function() {
   }
 
   console.log('Cmaginetttttttttttttttttttttt Inicio');
-  console.log(s);
+  console.log('s', s);
 }
 
 com_cmaginet_phishing_Handler.IGNORE = AjxUtil.arrayAsHash([".", ",", ";", "!", "*", ":", "?", ")", "]", "}"]);
