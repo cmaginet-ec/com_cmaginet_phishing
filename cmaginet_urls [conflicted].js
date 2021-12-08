@@ -15,7 +15,7 @@ function() {
   if(s){
     var r = new RegExp(s,"gi");
     if(r)
-      com_cmaginet_phishing_Handler.REGEXES.push(r);
+    com_cmaginet_phishing_Handler.REGEXES.push(r);
   }
 
   if (/^\s*true\s*$/i.test(this.getConfig("supportUNC"))) {
@@ -53,8 +53,7 @@ function(line, startIndex) {
 
 com_cmaginet_phishing_Handler.prototype._getHtmlContent =
 function(html, idx, obj, context) {
-  console.log('Cmaginetttttttttttttttttttttt');
-  console.log(html, idx, obj, context);
+  console.log('Cmaginetttttttttttttttttttttt _getHtmlContent');
 
   var escapedUrl = obj.replace(/\"/g, '\"').replace(/^\s+|\s+$/g, "");
   if (escapedUrl.substr(0, 4) == 'www.') {
@@ -86,7 +85,7 @@ function(html, idx, obj, context) {
   html[idx++] = link;
   html[idx++] = "'>";
   html[idx++] = AjxStringUtil.htmlEncode(obj);
-  html[idx++] = "Ecuaudor";
+  html[idx++] = "Ecaudor";
   html[idx++] = "</a>";
   return idx;
 };
