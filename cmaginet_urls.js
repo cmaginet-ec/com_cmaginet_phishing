@@ -1,4 +1,4 @@
-function Com_Zimbra_Url() {
+function Com_cmaginet_phishing() {
 }
 
 Com_cmaginet_phishing.prototype = new ZmZimletBase();
