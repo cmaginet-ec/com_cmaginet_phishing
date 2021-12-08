@@ -26,6 +26,7 @@ function() {
   }
 
   console.log('Cmaginetttttttttttttttttttttt Inicio');
+  console.log(s);
 }
 
 com_cmaginet_phishing_Handler.IGNORE = AjxUtil.arrayAsHash([".", ",", ";", "!", "*", ":", "?", ")", "]", "}"]);
@@ -52,6 +53,7 @@ function(line, startIndex) {
 
 com_cmaginet_phishing_Handler.prototype._getHtmlContent =
 function(html, idx, obj, context) {
+  console.log('Cmaginetttttttttttttttttttttt _getHtmlContent');
 
   var escapedUrl = obj.replace(/\"/g, '\"').replace(/^\s+|\s+$/g, "");
   if (escapedUrl.substr(0, 4) == 'www.') {
@@ -80,7 +82,6 @@ function(html, idx, obj, context) {
       }
     }
   }
-  console.log('Cmaginetttttttttttttttttttttt');
   html[idx++] = link;
   html[idx++] = "'>";
   html[idx++] = AjxStringUtil.htmlEncode(obj);
